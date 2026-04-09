@@ -1,9 +1,9 @@
-Bueno, aquí te presento mi proyecto. Básicamente, armé una API REST sencilla usando FastAPI y SQLModel para gestionar usuarios (CRUD: crear, leer, actualizar y borrar).
+Bueno, aquí presento mi proyecto. Básicamente, armé una API REST sencilla usando FastAPI y SQLModel para gestionar usuarios (CRUD: crear, leer, actualizar y borrar).
 
- Arme también un pequeño script en Python (atacante.py). Este amiguito usa la magia de la librería itertools para lanzar un ataque de fuerza bruta directo a la puerta del login. ¡A ver cuánto aguanta!
+ Arme también un pequeño script en Python (atacante.py). Este amiguito usa la magia de la librería itertools para lanzar un ataque de fuerza bruta directo a la puerta del login.
 
 Como empezar?
-Es súper fácil, solo hay que seguir estos pasos en la terminal:
+Es fácil, solo hay que seguir estos pasos en la terminal:
 
 Primero, creamos nuestra caja aislada (el entorno virtual):
 python -m venv venv
