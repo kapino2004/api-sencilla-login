@@ -15,7 +15,7 @@ print("Generando combinaciones...")
 time.sleep(2) # Pausa de 2 segundos para meterle dramatismo
 
 # 3. Empezamos el bucle: probar combinaciones de 1 a 3 letras
-for longitud in range(1, 5):
+for longitud in range(1, 4):
     # itertools genera todaslas combinaciones posibles
     for combinacion in itertools.product(letras, repeat=longitud):
         intento_password = "".join(combinacion)

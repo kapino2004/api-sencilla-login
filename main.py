@@ -18,12 +18,12 @@ class LoginRequest(BaseModel):
     username: str
     password: str
 
-# Evento de inicio (Lifespan): crea tablas y un usuario por defecto
+# Evento de inicio (Lifespan): crea las tablas y un usuario por defecto
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     SQLModel.metadata.create_all(engine)
     with Session(engine) as session:
-        usuario_prueba = User(username="admin", password="pupo")
+        usuario_prueba = User(username="admin", password="pie")
         session.add(usuario_prueba)
         session.commit()
     yield 
