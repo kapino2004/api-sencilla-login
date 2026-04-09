@@ -1,33 +1,36 @@
-# API Sencilla de Login con FastAPI y SQLModel
+Bueno, aquí te presento mi proyecto. Básicamente, armé una API REST sencilla usando FastAPI y SQLModel para gestionar usuarios (CRUD: crear, leer, actualizar y borrar).
 
-Esta es una API REST mínima construida con FastAPI que implementa un proceso de login básico contra una base de datos local usando `sqlmodel`. 
+ Arme también un pequeño script en Python (atacante.py). Este amiguito usa la magia de la librería itertools para lanzar un ataque de fuerza bruta directo a la puerta del login. ¡A ver cuánto aguanta!
 
-La base de datos se inicializa automáticamente al arrancar la aplicación y contiene un usuario por defecto. **No implementa JWT ni manejo de sesiones complejas**, su propósito es puramente educativo para entender el flujo de validación.
+Como empezar?
+Es súper fácil, solo hay que seguir estos pasos en la terminal:
 
-## Requisitos previos
-* Python 3.10 o superior.
+Primero, creamos nuestra caja aislada (el entorno virtual):
+python -m venv venv
 
-## Instalación y ejecución
+La encendemos:
+.\venv\Scripts\activate
 
-1. **Clone este repositorio** y navegue a la carpeta del proyecto.
-2. **Cree un entorno virtual**:
-   ```bash
-   python -m venv venv
-   .\venv\Scripts\activate
-
-Instale las dependencias:
-
-Bash
+Instalamos las herramientas que necesitamos:
 pip install -r requirements.txt
-Ejecuta el servidor:
 
-Bash
+Despertamos a la API:
 uvicorn main:app --reload
-La API estará disponible en http://127.0.0.1:8000.
 
-Usuario por defecto (Credenciales)
-Al iniciar la aplicación, se crea automáticamente el siguiente usuario para pruebas:
+Y ahora abrimos una terminal nueva (sin cerrar la anterior) y lanzamos el ataque:
+python atacante.py
 
-Username: admin
+Lo que aprendí de todo este desastre (Análisis y Mitigación) 
+El tiempo y los recursos de la compu:  El script que ataca va a toda máquina, prueba cientos de combinaciones por segundo gracias a lo optimizado que está itertools para las matemáticas. Descubrir una clave devil de 3 letras (como eco) le toma literal un par de segundos.
+Pero me di cuenta de algo muy interesante al hacer esto: procesar toda esa lluvia de peticiones falsas hace que el procesador de mi máquina empiece a sudar. Así que, sin querer queriendo, terminé demostrando cómo funciona un ataque de Denegación de Servicio (DoS) colateral. ¡El servidor se ahoga intentando rechazar a tantos intrusos!
 
-Password: password123
+¿Cómo nos protegemos de esto en la vida real?
+Viendo lo increíblemente fácil que fue entrar, yo aplicaría sí o sí estas cuatro medidas para no dejarle la puerta abierta a nadie:
+
+Rate Limiting (o sea, calmar un poco a la gente): Bloquear temporalmente a cualquier IP que intente hacer login más de 10 veces por minuto. Nadie normal se equivoca tantas veces tan rápido.
+
+Bloqueo de cuentas: Congelar la cuenta del usuario "admin" si vemos que metió mal la contraseña 5 veces seguidas.
+
+Cifrado de verdad: Guardar las claves en texto plano en la base de datos es un suicidio. Hay que usar librerías como Passlib (con algoritmos pesados como Bcrypt) para que, si alguien logra robar la base de datos, solo vea un revoltijo de letras sin sentido.
+
+Claves más difíciles, por favor: Poner una regla en el registro (POST /users) que obligue a crear contraseñas de al menos 8 caracteres. Con eso, a mi pobre script de fuerza bruta le tomaría años adivinarla.
